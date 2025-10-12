@@ -1,0 +1,41 @@
+name: Build Python Wheels
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-wheels:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.11]  # Add more Python versions if needed
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install cibuildwheel
+        run: pip install --upgrade pip cibuildwheel setuptools wheel
+
+      - name: Build wheels
+        run: |
+          cibuildwheel --output-dir wheelhouse
+
+      - name: List wheels
+        run: ls -lh wheelhouse
