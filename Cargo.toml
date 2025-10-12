@@ -1,0 +1,14 @@
+[package]
+name = "rust_fastmath"
+version = "0.2.0"
+edition = "2021"
+
+[lib]
+name = "rust_fastmath"
+crate-type = ["cdylib"]
+
+[dependencies]
+# The pyo3 features are slightly different when using numpy
+pyo3 = { version = "0.22", features = ["extension-module", "macros"] }
+meval = "0.2"
+numpy = "0.22"
