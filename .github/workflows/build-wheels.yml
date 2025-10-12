@@ -28,7 +28,18 @@ jobs:
         run: maturin build --release --out dist
 
       - name: Show built wheels
-        run: ls -lh dist
+        shell: pwsh
+        run: |
+          Write-Host "Listing built wheels in dist/"
+          if (Test-Path dist) {
+            if ($IsWindows) {
+              dir dist
+            } else {
+              bash -c "ls -lh dist"
+            }
+          } else {
+            Write-Host "No dist directory found"
+          }
 
       - name: Upload wheels as artifact
         uses: actions/upload-artifact@v4
