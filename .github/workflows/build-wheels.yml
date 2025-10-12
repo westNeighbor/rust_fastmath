@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'  # Example: v1.0.0
 
+permissions:
+  contents: write   # ✅ Needed for softprops/action-gh-release to create/upload releases
+
 jobs:
   build:
     name: Build wheels on ${{ matrix.os }}
