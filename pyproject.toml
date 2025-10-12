@@ -3,7 +3,7 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "rust_ODE_solver"
+name = "rust_fastmath"
 version = "0.1.0"
 description = "Fast Rust-based ODE solver with PyO3 bindings"
 authors = [{ name = "West Neighbor" }]
