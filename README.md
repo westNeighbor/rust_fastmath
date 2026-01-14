@@ -1,6 +1,6 @@
 <div align="center">
 
-# Math solver lib for [Blender math anim addon]{https://github.com/westNeighbor/Blender_math_anim}
+# Math solver lib for [Blender math anim addon](https://github.com/westNeighbor/Blender_math_anim)
 
 </div>
 
